@@ -1,0 +1,13 @@
+# Blokir akses langsung ke folder data
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^data/ - [F,L]
+</IfModule>
+
+# Fallback kalau mod_rewrite tidak aktif
+<FilesMatch "\.(json|tmp)$">
+  Require all denied
+</FilesMatch>
+
+# Halaman default
+DirectoryIndex index.php index.html
